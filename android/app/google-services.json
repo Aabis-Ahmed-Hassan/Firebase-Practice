@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1074018221438",
+    "project_id": "aabis-cli",
+    "storage_bucket": "aabis-cli.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074018221438:android:7d1c986536e32c8798c72f",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFe1v9ZX2cH3b3SW18BWFQr6rtS13KhmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074018221438:android:fb07fa98b318061998c72f",
+        "android_client_info": {
+          "package_name": "com.webnomatics.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFe1v9ZX2cH3b3SW18BWFQr6rtS13KhmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074018221438:android:8ee468ad2308be2898c72f",
+        "android_client_info": {
+          "package_name": "com.webnomatics.firebase_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFe1v9ZX2cH3b3SW18BWFQr6rtS13KhmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
