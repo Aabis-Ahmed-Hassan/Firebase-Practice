@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_practice/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -17,18 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [],
-          ),
-        ),
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+        useMaterial3: false,
       ),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
   }
 }
