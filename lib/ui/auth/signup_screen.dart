@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/ui/auth/login_screen.dart';
+import 'package:firebase_practice/utils/utils.dart';
 import 'package:firebase_practice/widgets/my_round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +16,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  FirebaseAuth _fbAuth = FirebaseAuth.instance;
+
   @override
   void dispose() {
     super.dispose();
@@ -27,7 +31,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         title: Text('SignUp Screen'),
         centerTitle: true,
-        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -55,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   TextFormField(
                     controller: passwordController,
-                    obscureText: true,
+                    // obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       prefixIcon: Icon(
@@ -74,7 +77,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   MyRoundButton(
                       title: 'Sign up',
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {}
+                        print('1');
+                        if (_formKey.currentState!.validate()) {
+                          print('123');
+
+                          _fbAuth
+                              .createUserWithEmailAndPassword(
+                                  email: emailController.text.toString(),
+                                  password: passwordController.text.toString())
+                              .then((value) => null)
+                              .onError((error, stackTrace) {
+                            Utils().showToastMessage(error.toString());
+                          });
+                        }
                       })
                 ],
               ),

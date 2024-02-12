@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/ui/auth/signup_screen.dart';
 import 'package:firebase_practice/widgets/my_round_button.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void dispose() {
     super.dispose();
@@ -27,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Login Screen'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -71,10 +75,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 20,
                   ),
                   MyRoundButton(
-                      title: 'Login',
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {}
-                      })
+                    title: 'Login',
+                    onTap: () {
+                      _auth.createUserWithEmailAndPassword(
+                          email: 'aabis123@gmail.com', password: '123415');
+
+                      // if (_formKey.currentState!.validate()) {
+                      //   _auth.createUserWithEmailAndPassword(
+                      //       email: emailController.text.toString(),
+                      //       password: passwordController.text.toString());
+                      // }
+                    },
+                  ),
                 ],
               ),
             ),
