@@ -1,3 +1,4 @@
+import 'package:firebase_practice/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -8,7 +9,7 @@ class Utils {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.indigo,
+        backgroundColor: AppColors.defaultColor,
         textColor: Colors.white,
         fontSize: 32.0);
   }
