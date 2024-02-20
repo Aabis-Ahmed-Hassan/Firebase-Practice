@@ -12,6 +12,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool loading = false;
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -76,20 +78,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   MyRoundButton(
                       title: 'Sign up',
+                      loading: loading,
                       onTap: () {
                         print('1');
-                        if (_formKey.currentState!.validate()) {
-                          print('123');
 
-                          _fbAuth
-                              .createUserWithEmailAndPassword(
-                                  email: emailController.text.toString(),
-                                  password: passwordController.text.toString())
-                              .then((value) => null)
-                              .onError((error, stackTrace) {
-                            Utils().showToastMessage(error.toString());
-                          });
-                        }
+                        setState(() {
+                          loading = true;
+                        });
+
+                        _fbAuth
+                            .createUserWithEmailAndPassword(
+                                email: emailController.text.toString(),
+                                password: passwordController.text.toString())
+                            .then((value) {})
+                            .onError((error, stackTrace) {
+                          Utils().showToastMessage(error.toString());
+                        });
                       })
                 ],
               ),
