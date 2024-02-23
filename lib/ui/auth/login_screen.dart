@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/ui/auth/signup_screen.dart';
+import 'package:firebase_practice/ui/home_screen.dart';
+import 'package:firebase_practice/utils/utils.dart';
 import 'package:firebase_practice/widgets/my_round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,13 +17,36 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final _fbAuth = FirebaseAuth.instance;
 
+  bool loading = false;
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void login() {
+    setState(() {
+      loading = true;
+    });
+    _fbAuth
+        .signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text)
+        .then((value) {
+      Utils().showToastMessage(value.user!.email.toString());
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScren()));
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      Utils().showToastMessage(error.toString());
+      setState(() {
+        loading = false;
+      });
+    });
   }
 
   @override
@@ -76,15 +101,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   MyRoundButton(
                     title: 'Login',
+                    loading: loading,
                     onTap: () {
-                      _auth.createUserWithEmailAndPassword(
-                          email: 'aabis123@gmail.com', password: '123415');
-
-                      // if (_formKey.currentState!.validate()) {
-                      //   _auth.createUserWithEmailAndPassword(
-                      //       email: emailController.text.toString(),
-                      //       password: passwordController.text.toString());
-                      // }
+                      if (_formKey.currentState!.validate()) {
+                        login();
+                      }
                     },
                   ),
                 ],
