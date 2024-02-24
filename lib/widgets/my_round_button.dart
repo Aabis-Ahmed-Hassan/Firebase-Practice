@@ -5,11 +5,15 @@ class MyRoundButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
   final bool loading;
+  final Color bgColor;
+  final Color textColor;
   MyRoundButton(
       {super.key,
       required this.title,
       required this.onTap,
-      this.loading = false});
+      this.loading = false,
+      this.textColor = Colors.white,
+      this.bgColor = AppColors.defaultColor});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +23,11 @@ class MyRoundButton extends StatelessWidget {
         height: 50,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.defaultColor,
-          borderRadius: BorderRadius.circular(15),
-        ),
+            color: bgColor,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: AppColors.defaultColor,
+            )),
         child: Center(
           child: loading
               ? CircularProgressIndicator(
@@ -31,7 +37,7 @@ class MyRoundButton extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontSize: 24,
-                    color: Colors.white,
+                    color: textColor,
                   ),
                 ),
         ),

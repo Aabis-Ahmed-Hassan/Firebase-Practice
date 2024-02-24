@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_practice/constants/app_colors.dart';
+import 'package:firebase_practice/ui/auth/login_with_phone.dart';
 import 'package:firebase_practice/ui/auth/signup_screen.dart';
 import 'package:firebase_practice/ui/home_screen.dart';
 import 'package:firebase_practice/utils/utils.dart';
@@ -130,6 +132,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text('Sign Up'),
                 )
               ],
+            ),
+            MyRoundButton(
+              title: 'Login with Phone',
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginWithPhone()));
+              },
+              bgColor: Colors.white,
+              textColor: AppColors.defaultColor,
             )
           ],
         ),

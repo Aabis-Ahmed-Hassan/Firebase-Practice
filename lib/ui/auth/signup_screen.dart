@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/ui/auth/login_screen.dart';
+import 'package:firebase_practice/ui/home_screen.dart';
 import 'package:firebase_practice/utils/utils.dart';
 import 'package:firebase_practice/widgets/my_round_button.dart';
 import 'package:flutter/material.dart';
@@ -89,8 +90,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 email: emailController.text.toString(),
                                 password: passwordController.text.toString())
                             .then((value) {
-                          Utils()
-                              .showToastMessage('User Created Successfully!');
+
+Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScren()));
                           setState(() {
                             loading = false;
                           });
